@@ -1,23 +1,23 @@
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const path = require('path');
-const dotenv = require('dotenv').config({path: __dirname + '/.env'});
+const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
 module.exports = {
   entry: './src/scripts/main.js',
   plugins: [
     new HtmlWebPackPlugin({
       hash: true,
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     }),
     new webpack.DefinePlugin( {
       'process.env': JSON.stringify(process.env || dotenv.parsed),
@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -62,7 +62,7 @@ module.exports = {
       new CssMinimizerPlugin()
     ]
   },
-  // Opens browser on run of npm start 
+  // Opens browser on run of npm start
   devServer: {
     open: true
   }
