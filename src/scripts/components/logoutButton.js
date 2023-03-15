@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 
 const signMeOut = () => {
+  document.querySelector('#app').innerHTML = '';
   firebase.auth().signOut();
 };
 
