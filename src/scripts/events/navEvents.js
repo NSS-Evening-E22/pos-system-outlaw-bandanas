@@ -1,15 +1,14 @@
 import createOrderPage from '../pages/createOrderPage';
-// import signOut from '../helpers/signOut';
+import renderHomePage from '../pages/homePage';
 
-const navEvents = () => {
-  // document.querySelector('#logout-button')
-  //   .addEventListener('click', signOut);
-
+const navEvents = (user) => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
-    console.warn(e.target);
-
+    console.warn(e.target.id);
     if (e.target.id.includes('create-orders')) {
       createOrderPage();
+    }
+    if (e.target.id.includes('go-home')) {
+      renderHomePage(user);
     }
   });
 };
