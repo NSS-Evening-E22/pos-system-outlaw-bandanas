@@ -1,10 +1,10 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDOM from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 
-const renderCreateOrderPage = (obj = {}) => {
+const createOrderPage = () => {
   clearDom();
+  // <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   const domString = `
-  <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   <div class="form-group">
     <label for="image">Order Name</label>
     <input type="text" class="form-control" id="order_name" placeholder="Order Name" required>
@@ -24,7 +24,7 @@ const renderCreateOrderPage = (obj = {}) => {
   <button type="submit" class="btn btn-primary mt-3">Create/Edit Order</button>
 </form>`;
 
-  renderToDOM(domString, '#form-pages');
+  renderToDom(domString, '#form-pages');
 };
 
-export default renderCreateOrderPage();
+export default createOrderPage;

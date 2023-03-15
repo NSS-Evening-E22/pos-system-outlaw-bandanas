@@ -1,5 +1,5 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDOM from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 
 const renderCloseOrderPage = () => {
   clearDom();
@@ -7,7 +7,7 @@ const renderCloseOrderPage = () => {
     <div>Close Order Form</div>
   `;
 
-  renderToDOM(domString, '#form-pages');
+  renderToDom(domString, '#form-pages');
 };
 
 export default renderCloseOrderPage();
