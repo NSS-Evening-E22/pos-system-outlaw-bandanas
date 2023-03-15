@@ -1,5 +1,5 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDom from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 
 const renderViewOrdersPage = () => {
   clearDom();
@@ -10,4 +10,4 @@ const renderViewOrdersPage = () => {
   renderToDom(domString, '#view-orders-page');
 };
 
-export default renderViewOrdersPage();
+export default renderViewOrdersPage;

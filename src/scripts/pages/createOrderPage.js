@@ -1,5 +1,5 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDOM from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDOM from '../utils/renderToDom';
 
 const renderCreateOrderPage = () => {
   clearDom();
@@ -10,4 +10,4 @@ const renderCreateOrderPage = () => {
   renderToDOM(domString, '#form-pages');
 };
 
-export default renderCreateOrderPage();
+export default renderCreateOrderPage;
