@@ -7,7 +7,7 @@ const renderCreateItemPage = () => {
     <div>Create item page</div>
   `;
 
-  renderToDOM(domString, 'form-pages');
+  renderToDOM(domString, '#form-pages');
 };
 
 export default renderCreateItemPage();

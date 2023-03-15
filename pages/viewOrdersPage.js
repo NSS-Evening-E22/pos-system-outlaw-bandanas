@@ -7,7 +7,7 @@ const renderViewOrdersPage = () => {
     <div>View Orders</div>
   `;
 
-  renderToDom(domString, 'view-orders-page');
+  renderToDom(domString, '#view-orders-page');
 };
 
 export default renderViewOrdersPage();

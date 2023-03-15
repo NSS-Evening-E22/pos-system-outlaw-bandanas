@@ -7,7 +7,7 @@ const renderCreateOrderPage = () => {
     <div>Create order page</div>
   `;
 
-  renderToDOM(domString, 'form-pages');
+  renderToDOM(domString, '#form-pages');
 };
 
 export default renderCreateOrderPage();

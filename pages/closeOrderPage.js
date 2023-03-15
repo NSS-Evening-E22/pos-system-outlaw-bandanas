@@ -7,7 +7,7 @@ const renderCloseOrderPage = () => {
     <div>Close Order Form</div>
   `;
 
-  renderToDOM(domString, 'form-pages');
+  renderToDOM(domString, '#form-pages');
 };
 
 export default renderCloseOrderPage();
