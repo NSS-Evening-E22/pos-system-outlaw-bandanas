@@ -14,7 +14,7 @@ const createNavbar = () => {
           <a class="nav-link active" aria-current="page" href="#">View Orders</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Create an Order</a>
+          <a class="nav-link" id="create-orders" href="#">Create an Order</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
