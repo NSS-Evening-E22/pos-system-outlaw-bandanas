@@ -10,4 +10,4 @@ const renderViewOrdersPage = () => {
   renderToDom(domString, '#view-orders-page');
 };
 
-export default renderViewOrdersPage();
+export default renderViewOrdersPage;

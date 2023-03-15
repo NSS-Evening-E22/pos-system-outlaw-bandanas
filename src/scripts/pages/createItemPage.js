@@ -1,13 +1,23 @@
+// import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 import clearDom from '../utils/clearDom';
-import renderToDOM from '../utils/renderToDom';
 
 const renderCreateItemPage = () => {
   clearDom();
   const domString = `
-    <div>Create item page</div>
-  `;
+  <form id="create-item-form" class="mb-4">
+  <div class="form-group">
+    <label for="image">Item Name</label>
+    <input type="text" class="form-control" id="item-name" placeholder="Item Name" required>
+  </div>
+  <div class="form-group">
+    <label for="image">Item Price</label>
+    <input type="text" class="form-control" id="item-price" placeholder="Item Price" required>
+  </div>
+  <button type="submit" class="btn btn-primary mt-3">Add/Edit Item</button>
+</form>`;
 
-  renderToDOM(domString, '#form-pages');
+  renderToDom(domString, '#form-pages');
 };
 
 export default renderCreateItemPage;
