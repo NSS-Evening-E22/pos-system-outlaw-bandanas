@@ -1,5 +1,5 @@
 import domBuilder from './domBuilder';
-import logoutButton from '../src/scripts/components/logoutButton';
+import logoutButton from '../components/logoutButton';
 // import domEvents from '../events/domEvents';
 // import formEvents from '../events/formEvents';
 // import navEvents from '../events/navEvents';
@@ -7,6 +7,7 @@ import logoutButton from '../src/scripts/components/logoutButton';
 import createNavbar from '../components/navbar';
 
 const startApp = () => {
+  document.querySelector('#login-form-container').innerHTML = '';
   domBuilder();
   createNavbar();
   logoutButton();
