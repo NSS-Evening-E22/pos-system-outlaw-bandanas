@@ -7,7 +7,7 @@ const renderOrderDetailsPage = () => {
     <div>Order Details</div>
   `;
 
-  renderToDom(domString, 'order-details-page');
+  renderToDom(domString, '#order-details-page');
 };
 
 export default renderOrderDetailsPage();

@@ -7,7 +7,7 @@ const renderRevenuePage = () => {
     <div>Revenue Page</div>
   `;
 
-  renderToDom(domString, 'revenue-page');
+  renderToDom(domString, '#revenue-page');
 };
 
 export default renderRevenuePage();
