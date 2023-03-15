@@ -1,6 +1,6 @@
 const navEvents = () => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
-    console.warn(e.target);
+    console.warn(e.target.id);
   });
 };
 
