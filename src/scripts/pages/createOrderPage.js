@@ -1,5 +1,5 @@
 import clearDom from '../utils/clearDom';
-import renderToDom from '../utils/renderToDom';
+import renderToDOM from '../utils/renderToDom';
 
 const createOrderPage = () => {
   clearDom();
@@ -24,7 +24,7 @@ const createOrderPage = () => {
   <button type="submit" class="btn btn-primary mt-3">Create/Edit Order</button>
 </form>`;
 
-  renderToDom(domString, '#form-pages');
+  renderToDOM(domString, '#form-pages');
 };
 
 export default createOrderPage;

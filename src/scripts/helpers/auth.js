@@ -11,8 +11,6 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // person is logged in do something...
-      // logoutButton();
-      document.querySelector('#login-form-container').innerHTML = '';
       startApp();
     } else {
       // person is NOT logged in
