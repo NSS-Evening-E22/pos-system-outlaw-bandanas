@@ -1,5 +1,5 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDOM from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 
 const renderHomePage = () => {
   clearDom();
@@ -7,7 +7,7 @@ const renderHomePage = () => {
     <div>Homepage</div>
   `;
 
-  renderToDOM(domString, '#home-page');
+  renderToDom(domString, '#home-page');
 };
 
-export default renderHomePage();
+export default renderHomePage;

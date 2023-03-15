@@ -1,5 +1,5 @@
-import clearDom from '../../../utils/clearDom';
-import renderToDom from '../../../utils/renderToDom';
+import clearDom from '../utils/clearDom';
+import renderToDom from '../utils/renderToDom';
 
 const renderRevenuePage = () => {
   clearDom();
@@ -10,4 +10,4 @@ const renderRevenuePage = () => {
   renderToDom(domString, '#revenue-page');
 };
 
-export default renderRevenuePage();
+export default renderRevenuePage;

@@ -10,4 +10,4 @@ const renderCloseOrderPage = () => {
   renderToDom(domString, '#form-pages');
 };
 
-export default renderCloseOrderPage();
+export default renderCloseOrderPage;
