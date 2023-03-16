@@ -1,4 +1,4 @@
-import renderCreateItemPage from '../pages/createItemPage';
+// import renderCreateItemPage from '../pages/createItemPage';
 import renderViewOrdersPage from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
 
@@ -9,9 +9,9 @@ const domEvents = () => {
       renderViewOrdersPage();
     }
 
-    if (e.target.id.includes('create-order')) {
-      renderCreateItemPage();
-    }
+    // if (e.target.id.includes('create-order')) {
+    //   renderCreateItemPage();
+    // }
 
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();

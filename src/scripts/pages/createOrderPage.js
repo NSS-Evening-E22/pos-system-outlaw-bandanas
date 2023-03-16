@@ -1,17 +1,17 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
-const createOrderPage = () => {
+const createOrderPage = (obj = {}) => {
   clearDom();
-  // <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   const domString = `
+  <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
   <div class="form-group">
     <label for="image">Order Name</label>
-    <input type="text" class="form-control" id="order_name" placeholder="Order Name" required>
+    <input type="text" class="form-control" id="order-name" placeholder="Order Name" required>
   </div>
   <div class="form-group">
     <label for="image">Customer Phone</label>
-    <input type="text" class="form-control" id="phone_number" placeholder="Enter phone number" required>
+    <input type="text" class="form-control" id="phone-number" placeholder="Enter phone number" required>
   </div>
   <div class="form-group">
     <label for="title">Email</label>
@@ -19,11 +19,10 @@ const createOrderPage = () => {
   </div>
   <div class="form-group">
     <label for="image">Order Type</label>
-    <input type="text" class="form-control" id="order_type" placeholder="Order Type" required>
+    <input type="text" class="form-control" id="order-type" placeholder="Order Type" required>
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Create/Edit Order</button>
+  <button type="submit" id="add-order-btn" class="btn btn-primary mt-3">Create/Edit Order</button>
 </form>`;
-
   renderToDOM(domString, '#form-pages');
 };
 
