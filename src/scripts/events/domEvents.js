@@ -32,9 +32,16 @@ const domEvents = () => {
 
     if (e.target.id.includes('order-details-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
+      console.warn(`Details button: ${firebaseKey}`);
       getItems().then((data) => {
         renderOrderDetailsPage(data, firebaseKey);
       });
+    }
+
+    if (e.target.id.includes('addItemButton')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(`Add Item button: ${firebaseKey}`);
+      renderCreateItemPage(firebaseKey);
     }
   });
 };

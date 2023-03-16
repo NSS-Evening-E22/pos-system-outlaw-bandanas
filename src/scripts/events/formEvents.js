@@ -23,7 +23,7 @@ const formEvents = () => {
       const payload = {
         itemName: document.querySelector('#item-name').value,
         itemPrice: document.querySelector('#item-price').value,
-        // orderId: `${firebaseKey}`,
+        orderId: document.querySelector('#firebaseKey').value,
       };
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
