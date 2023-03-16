@@ -4,7 +4,6 @@ import renderRevenuePage from '../pages/revenuePage';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
-    console.warn(e.target.id);
     if (e.target.id.includes('view-orders')) {
       createOrderPage();
     }
