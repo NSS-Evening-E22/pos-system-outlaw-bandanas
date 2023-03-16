@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
-=======
-// import clearDom from '../utils/clearDom';
-import renderToDom from '../utils/renderToDom';
-import clearDom from '../utils/clearDom';
->>>>>>> main
 
 const renderCreateItemPage = () => {
   clearDom();

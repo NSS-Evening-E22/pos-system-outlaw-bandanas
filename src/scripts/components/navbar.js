@@ -16,6 +16,9 @@ const createNavbar = () => {
         <li class="nav-item">
           <a class="nav-link" href="#">Create an Order</a>
         </li>
+        <li class="nav-item">
+          <a id="itemDetails" class="nav-link" href="#">Temp:Item Details</a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
