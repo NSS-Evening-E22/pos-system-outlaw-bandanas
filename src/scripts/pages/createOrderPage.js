@@ -1,7 +1,7 @@
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
-const createOrderPage = (obj = {}) => {
+const createOrder = (obj = {}) => {
   clearDom();
   const domString = `
   <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
@@ -26,4 +26,4 @@ const createOrderPage = (obj = {}) => {
   renderToDom(domString, '#form-pages');
 };
 
-export default createOrderPage;
+export default createOrder;

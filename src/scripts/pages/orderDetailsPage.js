@@ -1,9 +1,9 @@
-// import clearDom from '../utils/clearDom';
+import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 import itemCard from '../components/itemCard';
 
 const renderOrderDetailsPage = (array) => {
-  // clearDom();
+  clearDom();
   const domString = `
   <h1 class="mt-5">Total: $100.00</h1>
     <div id="itemCards" class="d-flex flex-column align-items-center "></div>

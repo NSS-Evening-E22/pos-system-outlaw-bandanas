@@ -2,6 +2,21 @@ import client from '../scripts/utils/client';
 
 const endpoint = client.databaseURL;
 
+const getOrders = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/orders.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      resolve(Object.values(data));
+      console.warn(Object.values(data));
+    })
+    .catch(reject);
+});
+
 const createOrder = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/orders.json`, {
     method: 'POST',
@@ -28,4 +43,4 @@ const updateOrder = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { createOrder, updateOrder };
+export { createOrder, updateOrder, getOrders };
