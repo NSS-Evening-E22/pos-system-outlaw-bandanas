@@ -1,5 +1,5 @@
 import clearDom from '../utils/clearDom';
-import renderToDOM from '../utils/renderToDom';
+import renderToDom from '../utils/renderToDom';
 
 const createOrderPage = () => {
   clearDom();
@@ -7,7 +7,7 @@ const createOrderPage = () => {
     <div>Create order page</div>
   `;
 
-  renderToDOM(domString, '#form-pages');
+  renderToDom(domString, '#form-pages');
 };
 
 export default createOrderPage;

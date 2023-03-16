@@ -12,7 +12,7 @@ const checkLoginStatus = () => {
       // person is logged in do something...
       // logoutButton();
       document.querySelector('#login-form-container').innerHTML = '';
-      startApp();
+      startApp(user);
     } else {
       // person is NOT logged in
       loginButton();
