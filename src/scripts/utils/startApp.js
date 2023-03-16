@@ -7,12 +7,12 @@ import renderHomePage from '../pages/homePage';
 import createNavbar from '../components/navbar';
 
 const startApp = (user) => {
-  document.querySelector('#login-form-container').innerHTML = '';
   domBuilder();
   createNavbar();
   logoutButton();
   domEvents();
   // formEvents();
+  // renderHomePage();
   navEvents(user);
   renderHomePage(user);
 };
