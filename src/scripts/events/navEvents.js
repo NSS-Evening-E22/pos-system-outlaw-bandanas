@@ -6,7 +6,7 @@ const navEvents = () => {
     if (e.target.id.includes('itemDetails')) {
       getItems().then((data) => {
         console.warn(data);
-        renderOrderDetailsPage();
+        renderOrderDetailsPage(data);
       });
     }
   });
