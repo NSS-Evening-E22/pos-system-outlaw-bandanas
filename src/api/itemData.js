@@ -21,6 +21,7 @@ const getItems = () => new Promise((resolve, reject) => {
 });
 
 const createItem = (payload) => new Promise((resolve, reject) => {
+  console.warn(payload);
   fetch(`${endpoint}/items.json`, {
     method: 'POST',
     headers: {
