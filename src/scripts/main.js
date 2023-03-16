@@ -5,7 +5,6 @@ import '../styles/main.scss';
 
 const init = () => {
   // USE WITH FIREBASE AUTH
-  // checkLoginStatus();
   checkLoginStatus();
 };
 
