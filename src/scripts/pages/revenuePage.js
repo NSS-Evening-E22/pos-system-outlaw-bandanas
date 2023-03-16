@@ -10,4 +10,4 @@ const renderRevenuePage = () => {
   renderToDom(domString, '#revenue-page');
 };
 
-export default renderRevenuePage();
+export default renderRevenuePage;

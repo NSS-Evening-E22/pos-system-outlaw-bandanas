@@ -10,4 +10,4 @@ const renderCreateOrderPage = () => {
   renderToDom(domString, '#form-pages');
 };
 
-export default renderCreateOrderPage();
+export default renderCreateOrderPage;

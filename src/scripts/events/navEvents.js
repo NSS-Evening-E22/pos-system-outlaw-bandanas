@@ -1,7 +1,8 @@
 import getOrders from '../../../.github/orderData';
 import { showOrders, createOrderPage } from '../pages/viewOrdersPage';
+import renderHomePage from '../pages/homePage';
 
-const navEvents = () => {
+const navEvents = (user) => {
   document.querySelector('#navBar').addEventListener('click', (e) => {
     if (e.target.id.includes('nav-view-orders')) {
       console.warn('nav view orders clicked');
@@ -9,7 +10,9 @@ const navEvents = () => {
       getOrders().then(showOrders);
     }
 
-    console.warn(e.target);
+    if (e.target.id.includes('go-home')) {
+      renderHomePage(user);
+    }
   });
 };
 

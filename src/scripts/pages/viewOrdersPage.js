@@ -39,21 +39,3 @@ export {
   createOrderPage,
   showOrders,
 };
-
-/* <div class="card d-flex" style="width: 19rem;">
-    <div class="card-body">
-      <h5 class="card-title">${item.orderName}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">${item.status}</h6>
-      <hr>
-      <div id="card-info">
-        <p class="card-text">${item.email}</p>
-        <p class="card-text">${item.phoneNum}</p>
-        <p class="card-text">Order Type:${item.orderType}</p>
-        <div id="card-buttons">
-          <button class="card-link" id="view-order-btn--${item.firebaseKey}">Details</button>
-          <button class="card-link" id="edit-order-btn--${item.firebaseKey}">Edit</button>
-          <button class="card-link" id="delete-order-btn--${item.firebaseKey}">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div> */
