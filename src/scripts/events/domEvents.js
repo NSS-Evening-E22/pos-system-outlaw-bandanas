@@ -4,6 +4,8 @@ import { getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
+import { getItems } from '../../api/itemData';
+import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
@@ -26,6 +28,13 @@ const domEvents = () => {
 
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
+    }
+
+    if (e.target.id.includes('order-details-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getItems().then((data) => {
+        renderOrderDetailsPage(data, firebaseKey);
+      });
     }
   });
 };
