@@ -12,7 +12,6 @@ const getOrders = () => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       resolve(Object.values(data));
-      console.warn(Object.values(data));
     })
     .catch(reject);
 });
@@ -43,4 +42,21 @@ const updateOrder = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { createOrder, updateOrder, getOrders };
+const deleteOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/orders/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  createOrder,
+  updateOrder,
+  getOrders,
+  deleteOrder,
+};
