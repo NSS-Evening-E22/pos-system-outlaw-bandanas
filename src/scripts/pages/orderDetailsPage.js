@@ -8,12 +8,12 @@ const priceTotaled = (array) => {
   array.forEach((item) => {
     total += item.itemPrice;
   });
-  return total;
+  return total.toFixed(2);
 };
 
 const renderOrderDetailsPage = (array, firebaseKey) => {
   const totalPrice = priceTotaled(array);
-  console.warn(`Price: ${totalPrice}`);
+
   clearDom();
   const domString = `
   <h1 class="mt-5">Total: $${totalPrice}</h1>

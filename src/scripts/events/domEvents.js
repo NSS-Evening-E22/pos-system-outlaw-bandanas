@@ -39,8 +39,17 @@ const domEvents = () => {
 
     if (e.target.id.includes('addItemButton')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Add Item button: ${firebaseKey}`);
       renderCreateItemPage(firebaseKey);
+    }
+
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(`Edit Item: ${firebaseKey}`);
+    }
+
+    if (e.target.id.includes('delete-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(`ItemFBkey: ${firebaseKey}`);
     }
   });
 };
