@@ -1,6 +1,6 @@
 import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { getOrders } from '../../api/orderData';
+import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 
 const domEvents = () => {
@@ -16,6 +16,17 @@ const domEvents = () => {
 
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();
+    }
+
+    if (e.target.id.includes('delete-order-btn')) {
+      console.warn('Delete Order clicked');
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to Delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteOrder(firebaseKey).then(() => {
+          getOrders().then(showOrders);
+        });
+      }
     }
   });
 };

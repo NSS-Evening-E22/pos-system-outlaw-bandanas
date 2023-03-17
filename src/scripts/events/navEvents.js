@@ -16,7 +16,6 @@ const navEvents = (user) => {
       renderHomePage(user);
     }
     if (e.target.id.includes('nav-view-orders')) {
-      console.warn('nav view orders clicked');
       createOrderPage();
       getOrders().then(showOrders);
     }
