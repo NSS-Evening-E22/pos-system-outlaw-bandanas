@@ -20,6 +20,25 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items.json?orderBy="orderId"&equalTo="${orderId}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        console.warn(data);
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
 const createItem = (payload) => new Promise((resolve, reject) => {
   console.warn(payload);
   fetch(`${endpoint}/items.json`, {
@@ -49,6 +68,7 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
 
 export {
   getItems,
+  getItemsByOrderId,
   createItem,
   updateItem,
 };

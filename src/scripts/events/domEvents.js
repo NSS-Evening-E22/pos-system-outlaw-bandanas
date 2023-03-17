@@ -4,7 +4,7 @@ import { getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItems } from '../../api/itemData';
+import { getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
 const domEvents = () => {
@@ -32,8 +32,7 @@ const domEvents = () => {
 
     if (e.target.id.includes('order-details-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Details button: ${firebaseKey}`);
-      getItems().then((data) => {
+      getItemsByOrderId(firebaseKey).then((data) => {
         renderOrderDetailsPage(data, firebaseKey);
       });
     }
