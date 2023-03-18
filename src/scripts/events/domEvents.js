@@ -4,7 +4,7 @@ import { getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItemsByOrderId, deleteItem } from '../../api/itemData';
+import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
 const domEvents = () => {
@@ -42,6 +42,10 @@ const domEvents = () => {
     if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       console.warn(`Edit Item: ${firebaseKey}`);
+      getSingleItem(firebaseKey).then((data) => {
+        console.warn(`DATA: ${data}`);
+        renderCreateItemPage(data.orderId);
+      });
     }
     // EVENT HANDLER FOR DELETE ITEM BUTTON
     if (e.target.id.includes('delete-item-btn')) {
