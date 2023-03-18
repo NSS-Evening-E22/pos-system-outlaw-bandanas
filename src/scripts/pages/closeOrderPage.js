@@ -1,17 +1,20 @@
 import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
-const renderCloseOrderPage = () => {
+const renderCloseOrderPage = (orderId) => {
+  console.warn(`OrderId: ${orderId}`);
   clearDom();
   const domString = `
+  
   <form id="close-order-form" class="mb-4">
   <div class="form-group">
-    <label for="image">Payment Type</label>
+    <label for="payment-type">Payment Type</label>
     <input type="text" class="form-control" id="payment-type" placeholder="Payment Type (cash, credit, mobile)" required>
   </div>
   <div class="form-group">
-    <label for="image">Tip Amount</label>
+    <label for="tip">Tip Amount</label>
     <input type="text" class="form-control" id="tip" placeholder="Tip" required>
+    <input type="hidden" id="orderId" value="${orderId}">
   </div>
   <button type="submit" class="btn btn-primary mt-3">Close Order</button>
 </form>`;

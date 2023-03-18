@@ -1,8 +1,9 @@
 import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import renderHomePage from '../pages/homePage';
 
-const formEvents = () => {
+const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -46,12 +47,24 @@ const formEvents = () => {
         firebaseKey,
       };
       updateItem(payload)
-        .then()
         .then(() => {
-          const orderId = document.querySelector('#firebaseKey').value;
-          getItemsByOrderId(orderId).then((data) => {
-            renderOrderDetailsPage(data, orderId);
+          getItemsByOrderId(firebaseKey).then((data) => {
+            renderOrderDetailsPage(data, firebaseKey);
           });
+        });
+    }
+
+    // CLOSE ORDER
+    if (e.target.id.includes('close-order-form')) {
+      const payload = {
+        paymentType: document.querySelector('#payment-type').value,
+        tip: Number(document.querySelector('#tip').value),
+        status: 'closed',
+        firebaseKey: document.querySelector('#orderId').value,
+      };
+      updateOrder(payload)
+        .then(() => {
+          renderHomePage(user);
         });
     }
   });
