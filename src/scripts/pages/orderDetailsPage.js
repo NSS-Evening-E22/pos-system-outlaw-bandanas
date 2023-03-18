@@ -13,7 +13,6 @@ const priceTotaled = (array) => {
 
 const renderOrderDetailsPage = (array, orderId) => {
   const totalPrice = priceTotaled(array);
-
   clearDom();
   const domString = `
   <h1 class="mt-5">Total: $${totalPrice}</h1>

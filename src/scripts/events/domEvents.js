@@ -1,11 +1,11 @@
 import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { getOrders } from '../../api/orderData';
+import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
@@ -22,6 +22,16 @@ const domEvents = () => {
       renderRevenuePage();
     }
 
+    if (e.target.id.includes('delete-order-btn')) {
+      console.warn('Delete Order clicked');
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to Delete?')) {
+        const [, firebaseKey] = e.target.id.split('--');
+        deleteOrder(firebaseKey).then(() => {
+          getOrders().then(showOrders);
+        });
+      }
+    }
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
