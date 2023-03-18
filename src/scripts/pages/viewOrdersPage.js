@@ -4,8 +4,8 @@ import renderToDom from '../utils/renderToDom';
 const createOrderPage = () => {
   clearDom();
   const domString = `
-    <div>View Orders</div>
-    <div id="view-orders-content" class="d-flex gap-4 flex-wrap mx-auto w-75"></div>
+    <h1 class="mb-2">Open Orders</h1>
+    <div id="view-orders-content" class="d-flex justify-content-center gap-4 flex-wrap mx-auto w-75"></div>
   `;
 
   renderToDom(domString, '#view-orders-page');
