@@ -1,10 +1,18 @@
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~bootstrap/scss/bootstrap";
+$primary: #d2b48c;
+$success: #1a472a;
+$warning: #959672;
+$danger: #6f4e37;
+$secondary: #5c4033;
 
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~bootstrap/scss/bootstrap';
 
 body {
   background-color: antiquewhite;
   color: brown;
   text-align: center;
-  margin-top: 100px;
+}
+#itemCards {
+  width: 80%;
+  margin: 1.5em auto;
 }
