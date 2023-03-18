@@ -45,16 +45,13 @@ const domEvents = () => {
     // EVENT HANDLER FOR ADD ITEM BUTTON
     if (e.target.id.includes('addItemButton')) {
       const [, orderId] = e.target.id.split('--');
-      console.warn(`AddItem orderId: ${orderId}`);
       renderCreateItemPage(orderId);
     }
     // EVENT HANDLER FOR EDIT ITEM BUTTON
     if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Edit Item: ${firebaseKey}`);
       getSingleItem(firebaseKey).then((data) => {
-        console.warn(`DATA: ${data}`);
-        renderCreateItemPage(data.orderId);
+        renderCreateItemPage(data.orderId, data);
       });
     }
     // EVENT HANDLER FOR DELETE ITEM BUTTON

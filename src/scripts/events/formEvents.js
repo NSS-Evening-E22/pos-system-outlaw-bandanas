@@ -36,6 +36,24 @@ const formEvents = () => {
         });
       });
     }
+
+    // EDIT ITEM
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        itemName: document.querySelector('#item-name').value,
+        itemPrice: Number(document.querySelector('#item-price').value),
+        firebaseKey,
+      };
+      updateItem(payload)
+        .then()
+        .then(() => {
+          const orderId = document.querySelector('#firebaseKey').value;
+          getItemsByOrderId(orderId).then((data) => {
+            renderOrderDetailsPage(data, orderId);
+          });
+        });
+    }
   });
 };
 
