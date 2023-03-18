@@ -4,8 +4,8 @@ import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItemsByOrderId, deleteItem } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
@@ -31,8 +31,8 @@ const domEvents = () => {
           getOrders().then(showOrders);
         });
       }
-
-   if (e.target.id.includes('goToPaymentButton')) {
+    }
+    if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
 
@@ -42,17 +42,17 @@ const domEvents = () => {
         renderOrderDetailsPage(data, firebaseKey);
       });
     }
-
     // EVENT HANDLER FOR ADD ITEM BUTTON
     if (e.target.id.includes('addItemButton')) {
       const [, orderId] = e.target.id.split('--');
-      console.warn(`AddItem orderId: ${orderId}`);
       renderCreateItemPage(orderId);
     }
     // EVENT HANDLER FOR EDIT ITEM BUTTON
     if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Edit Item: ${firebaseKey}`);
+      getSingleItem(firebaseKey).then((data) => {
+        renderCreateItemPage(data.orderId, data);
+      });
     }
     // EVENT HANDLER FOR DELETE ITEM BUTTON
     if (e.target.id.includes('delete-item-btn')) {
@@ -62,8 +62,7 @@ const domEvents = () => {
           renderOrderDetailsPage(data, orderId);
         });
       });
-
-  
+    }
   });
 };
 
