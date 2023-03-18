@@ -29,10 +29,11 @@ const formEvents = () => {
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateItem(patchPayload);
-      });
-      const firebaseKey = document.querySelector('#firebaseKey').value;
-      getItemsByOrderId(firebaseKey).then((data) => {
-        renderOrderDetailsPage(data, firebaseKey);
+      }).then(() => {
+        const firebaseKey = document.querySelector('#firebaseKey').value;
+        getItemsByOrderId(firebaseKey).then((data) => {
+          renderOrderDetailsPage(data, firebaseKey);
+        });
       });
     }
   });

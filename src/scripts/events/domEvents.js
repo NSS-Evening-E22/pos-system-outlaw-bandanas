@@ -4,7 +4,7 @@ import { getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItemsByOrderId } from '../../api/itemData';
+import { getItemsByOrderId, deleteItem } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
 const domEvents = () => {
@@ -42,14 +42,19 @@ const domEvents = () => {
       renderCreateItemPage(firebaseKey);
     }
 
-    if (e.target.id.includes('edit-item')) {
+    if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       console.warn(`Edit Item: ${firebaseKey}`);
     }
 
-    if (e.target.id.includes('delete-item')) {
-      const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`ItemFBkey: ${firebaseKey}`);
+    if (e.target.id.includes('delete-item-btn')) {
+      const [, firebaseKey, orderId] = e.target.id.split('--');
+      console.warn(`fbKey: ${firebaseKey}  orderId: ${orderId}`);
+      deleteItem(firebaseKey).then(() => {
+        getItemsByOrderId(orderId).then((data) => {
+          renderOrderDetailsPage(data, orderId);
+        });
+      });
     }
   });
 };
