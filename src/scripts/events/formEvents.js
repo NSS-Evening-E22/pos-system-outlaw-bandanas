@@ -2,6 +2,7 @@ import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
+
 const formEvents = () => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -34,6 +35,7 @@ const formEvents = () => {
       getItemsByOrderId(firebaseKey).then((data) => {
         renderOrderDetailsPage(data, firebaseKey);
       });
+
     }
   });
 };

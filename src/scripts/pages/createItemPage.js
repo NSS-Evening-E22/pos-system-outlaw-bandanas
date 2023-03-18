@@ -3,6 +3,7 @@ import renderToDom from '../utils/renderToDom';
 
 const renderCreateItemPage = (firebaseKey) => {
   clearDom();
+  console.warn(firebaseKey);
   const domString = `
   <form id="create-item-form" class="mb-4">
   <div class="form-group">

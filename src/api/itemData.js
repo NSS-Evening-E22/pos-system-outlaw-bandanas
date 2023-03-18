@@ -20,6 +20,7 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+
 const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items.json?orderBy="orderId"&equalTo="${orderId}"`, {
     method: 'GET',

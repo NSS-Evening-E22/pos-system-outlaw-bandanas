@@ -2,6 +2,7 @@ import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 import itemCard from '../components/itemCard';
 
+
 const priceTotaled = (array) => {
   // const total = array.reduce((prev, next) => prev.itemPrice + next.itemPrice, 0);
   let total = 0;
@@ -14,6 +15,8 @@ const priceTotaled = (array) => {
 const renderOrderDetailsPage = (array, firebaseKey) => {
   const totalPrice = priceTotaled(array);
   console.warn(`Price: ${totalPrice}`);
+
+const renderOrderDetailsPage = (array, firebaseKey) => {
   clearDom();
   const domString = `
   <h1 class="mt-5">Total: $${totalPrice}</h1>
