@@ -2,7 +2,6 @@ import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
-
 const formEvents = () => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -30,10 +29,11 @@ const formEvents = () => {
       createItem(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateItem(patchPayload);
-      });
-      const firebaseKey = document.querySelector('#firebaseKey').value;
-      getItemsByOrderId(firebaseKey).then((data) => {
-        renderOrderDetailsPage(data, firebaseKey);
+      }).then(() => {
+        const firebaseKey = document.querySelector('#firebaseKey').value;
+        getItemsByOrderId(firebaseKey).then((data) => {
+          renderOrderDetailsPage(data, firebaseKey);
+        });
       });
 
     }

@@ -4,9 +4,7 @@ import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItemsByOrderId } from '../../api/itemData';
-import { getItems } from '../../api/itemData';
-
+import { getItemsByOrderId, deleteItem } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 
 const domEvents = () => {
@@ -24,8 +22,6 @@ const domEvents = () => {
       renderRevenuePage();
     }
 
-
-
     if (e.target.id.includes('delete-order-btn')) {
       console.warn('Delete Order clicked');
       // eslint-disable-next-line no-alert
@@ -36,11 +32,7 @@ const domEvents = () => {
         });
       }
 
-    if (e.target.id.includes('addItemButton')) {
-      renderCreateItemPage();
-    }
-
-    if (e.target.id.includes('goToPaymentButton')) {
+   if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
 
@@ -51,11 +43,27 @@ const domEvents = () => {
       });
     }
 
+    // EVENT HANDLER FOR ADD ITEM BUTTON
     if (e.target.id.includes('addItemButton')) {
-      const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Add Item button: ${firebaseKey}`);
-      renderCreateItemPage(firebaseKey);
+      const [, orderId] = e.target.id.split('--');
+      console.warn(`AddItem orderId: ${orderId}`);
+      renderCreateItemPage(orderId);
     }
+    // EVENT HANDLER FOR EDIT ITEM BUTTON
+    if (e.target.id.includes('edit-item-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn(`Edit Item: ${firebaseKey}`);
+    }
+    // EVENT HANDLER FOR DELETE ITEM BUTTON
+    if (e.target.id.includes('delete-item-btn')) {
+      const [, firebaseKey, orderId] = e.target.id.split('--');
+      deleteItem(firebaseKey).then(() => {
+        getItemsByOrderId(orderId).then((data) => {
+          renderOrderDetailsPage(data, orderId);
+        });
+      });
+
+  
   });
 };
 

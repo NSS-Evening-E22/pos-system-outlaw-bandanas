@@ -20,7 +20,6 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-
 const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items.json?orderBy="orderId"&equalTo="${orderId}"`, {
     method: 'GET',
@@ -31,7 +30,6 @@ const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       if (data) {
-        console.warn(data);
         resolve(Object.values(data));
       } else {
         resolve([]);
@@ -41,7 +39,6 @@ const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
 });
 
 const createItem = (payload) => new Promise((resolve, reject) => {
-  console.warn(payload);
   fetch(`${endpoint}/items.json`, {
     method: 'POST',
     headers: {
@@ -67,9 +64,25 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+
+const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+
 export {
   getItems,
   getItemsByOrderId,
   createItem,
   updateItem,
+  deleteItem
+
 };

@@ -1,7 +1,8 @@
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
-const renderCreateItemPage = (firebaseKey) => {
+
+const renderCreateItemPage = (orderId) => {
   clearDom();
   console.warn(firebaseKey);
   const domString = `
@@ -13,7 +14,7 @@ const renderCreateItemPage = (firebaseKey) => {
   <div class="form-group">
     <label for="image">Item Price</label>
     <input type="text" class="form-control" id="item-price" placeholder="Item Price" required>
-    <input type="hidden" id="firebaseKey" value="${firebaseKey}" >
+    <input type="hidden" id="firebaseKey" value="${orderId}" >
   </div>
   <button type="submit" class="btn btn-primary mt-3">Add/Edit Item</button>
 </form>`;
