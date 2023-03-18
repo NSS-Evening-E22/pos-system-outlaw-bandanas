@@ -18,6 +18,19 @@ const formEvents = () => {
         updateOrder(patchPayload);
       });
     }
+
+    if (e.target.id.includes('update-order')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        orderName: document.querySelector('#order-name').value,
+        phoneNum: document.querySelector('#phone-number').value,
+        email: document.querySelector('#email').value,
+        orderType: document.querySelector('#order-type').value,
+        status: 'open',
+        firebaseKey,
+      };
+      updateOrder(payload);
+    }
   });
 };
 
