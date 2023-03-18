@@ -22,10 +22,6 @@ const domEvents = () => {
       renderRevenuePage();
     }
 
-    if (e.target.id.includes('addItemButton')) {
-      renderCreateItemPage();
-    }
-
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
@@ -36,20 +32,20 @@ const domEvents = () => {
         renderOrderDetailsPage(data, firebaseKey);
       });
     }
-
+    // EVENT HANDLER FOR ADD ITEM BUTTON
     if (e.target.id.includes('addItemButton')) {
-      const [, firebaseKey] = e.target.id.split('--');
-      renderCreateItemPage(firebaseKey);
+      const [, orderId] = e.target.id.split('--');
+      console.warn(`AddItem orderId: ${orderId}`);
+      renderCreateItemPage(orderId);
     }
-
+    // EVENT HANDLER FOR EDIT ITEM BUTTON
     if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       console.warn(`Edit Item: ${firebaseKey}`);
     }
-
+    // EVENT HANDLER FOR DELETE ITEM BUTTON
     if (e.target.id.includes('delete-item-btn')) {
       const [, firebaseKey, orderId] = e.target.id.split('--');
-      console.warn(`fbKey: ${firebaseKey}  orderId: ${orderId}`);
       deleteItem(firebaseKey).then(() => {
         getItemsByOrderId(orderId).then((data) => {
           renderOrderDetailsPage(data, orderId);
