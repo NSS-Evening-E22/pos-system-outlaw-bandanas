@@ -14,18 +14,17 @@ const domEvents = () => {
       createOrderPage();
       getOpenOrders().then(showOrders);
     }
-
+    // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
       createOrder();
     }
-
+    // EVENT HANDLER FOR VIEW REVENUE BUTTON
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();
     }
 
     // EVENT HANDLER FOR DELETE ORDER BUTTON
     if (e.target.id.includes('delete-order-btn')) {
-      console.warn('Delete Order clicked');
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to Delete?')) {
         const [, firebaseKey] = e.target.id.split('--');

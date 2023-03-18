@@ -2,7 +2,6 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
 const renderCloseOrderPage = (orderId) => {
-  console.warn(`OrderId: ${orderId}`);
   clearDom();
   const domString = `
   
