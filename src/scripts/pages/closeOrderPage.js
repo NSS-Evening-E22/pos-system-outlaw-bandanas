@@ -7,7 +7,7 @@ const renderCloseOrderPage = () => {
   <form id="close-order-form" class="mb-4">
   <div class="form-group">
     <label for="image">Payment Type</label>
-    <input type="text" class="form-control" id="payment-type" placeholder="Payment Type" required>
+    <input type="text" class="form-control" id="payment-type" placeholder="Payment Type (cash, credit, mobile)" required>
   </div>
   <div class="form-group">
     <label for="image">Tip Amount</label>

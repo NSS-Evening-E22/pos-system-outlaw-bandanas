@@ -12,7 +12,6 @@ const getOrders = () => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => {
       resolve(Object.values(data));
-      console.warn(Object.values(data));
     })
     .catch(reject);
 });
