@@ -4,8 +4,8 @@ import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import { getItems } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
@@ -22,7 +22,6 @@ const domEvents = () => {
       renderRevenuePage();
     }
 
-
     if (e.target.id.includes('delete-order-btn')) {
       console.warn('Delete Order clicked');
       // eslint-disable-next-line no-alert
@@ -32,28 +31,37 @@ const domEvents = () => {
           getOrders().then(showOrders);
         });
       }
-
-    if (e.target.id.includes('addItemButton')) {
-      renderCreateItemPage();
     }
-
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
 
     if (e.target.id.includes('order-details-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Details button: ${firebaseKey}`);
-      getItems().then((data) => {
+      getItemsByOrderId(firebaseKey).then((data) => {
         renderOrderDetailsPage(data, firebaseKey);
       });
     }
-
+    // EVENT HANDLER FOR ADD ITEM BUTTON
     if (e.target.id.includes('addItemButton')) {
+      const [, orderId] = e.target.id.split('--');
+      renderCreateItemPage(orderId);
+    }
+    // EVENT HANDLER FOR EDIT ITEM BUTTON
+    if (e.target.id.includes('edit-item-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
-      console.warn(`Add Item button: ${firebaseKey}`);
-      renderCreateItemPage(firebaseKey);
-
+      getSingleItem(firebaseKey).then((data) => {
+        renderCreateItemPage(data.orderId, data);
+      });
+    }
+    // EVENT HANDLER FOR DELETE ITEM BUTTON
+    if (e.target.id.includes('delete-item-btn')) {
+      const [, firebaseKey, orderId] = e.target.id.split('--');
+      deleteItem(firebaseKey).then(() => {
+        getItemsByOrderId(orderId).then((data) => {
+          renderOrderDetailsPage(data, orderId);
+        });
+      });
     }
   });
 };
