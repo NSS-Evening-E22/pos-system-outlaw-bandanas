@@ -1,7 +1,6 @@
 import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
 import { deleteOrder, getOrders, getSingleOrder } from '../../api/orderData';
-import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
@@ -37,7 +36,7 @@ const domEvents = () => {
     if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orderObj) => createOrder(orderObj));
-
+    }
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
