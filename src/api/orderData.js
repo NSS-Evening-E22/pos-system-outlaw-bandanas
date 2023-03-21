@@ -11,21 +11,6 @@ const getOrders = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      resolve(Object.values(data));
-    })
-    .catch(reject);
-});
-
-// GET OPEN ORDERS
-const getOpenOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/orders.json?orderBy="status"&equalTo="open"`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
       if (data) {
         resolve(Object.values(data));
       } else {
@@ -73,9 +58,22 @@ const deleteOrder = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+
+const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/orders/${firebaseKey}.json`, {
+   method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const getClosedOrders = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/orders.json?orderBy="status"&equalTo="closed"`, {
-    method: 'GET',
+  method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -96,6 +94,7 @@ export {
   updateOrder,
   getOrders,
   deleteOrder,
+  getSingleOrder,
   getOpenOrders,
   getClosedOrders
 };

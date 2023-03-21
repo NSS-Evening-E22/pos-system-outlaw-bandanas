@@ -1,12 +1,13 @@
-import { createOrder, updateOrder } from '../../api/orderData';
+import { getOrders, createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderHomePage from '../pages/homePage';
 
 const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
-
+    //  EVENT HANDLER SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
         orderName: document.querySelector('#order-name').value,
@@ -15,44 +16,63 @@ const formEvents = (user) => {
         orderType: document.querySelector('#order-type').value,
         status: 'open',
       };
-      createOrder(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateOrder(patchPayload);
+      createOrder(payload)
+        .then(({ name }) => {
+          const patchPayload = { firebaseKey: name };
+          updateOrder(patchPayload);
+        })
+        .then(() => {
+          createOrderPage();
+          getOrders().then((data) => {
+            const openOrders = data.filter((item) => item.status === 'open');
+            showOrders(openOrders);
+            const closedOrders = data.filter(
+              (item) => item.status === 'closed'
+            );
+            showClosedOrders(closedOrders);
+          });
+        });
+    }
+    if (e.target.id.includes('update-order')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        orderName: document.querySelector('#order-name').value,
+        phoneNum: document.querySelector('#phone-number').value,
+        email: document.querySelector('#email').value,
+        orderType: document.querySelector('#order-type').value,
+        status: 'open',
+        firebaseKey,
+      };
+      updateOrder(payload).then(() => {
+        createOrderPage();
+        getOrders().then((data) => {
+          const openOrders = data.filter((item) => item.status === 'open');
+          showOrders(openOrders);
+          const closedOrders = data.filter((item) => item.status === 'closed');
+          showClosedOrders(closedOrders);
+        });
       });
     }
 
+    // EVENT HANDLER FOR CREATE ITEM
     if (e.target.id.includes('create-item-form')) {
       const payload = {
         itemName: document.querySelector('#item-name').value,
         itemPrice: Number(document.querySelector('#item-price').value),
         orderId: document.querySelector('#firebaseKey').value,
       };
-      createItem(payload).then(({ name }) => {
-        const patchPayload = { firebaseKey: name };
-        updateItem(patchPayload);
-      }).then(() => {
-        const firebaseKey = document.querySelector('#firebaseKey').value;
-        getItemsByOrderId(firebaseKey).then((data) => {
-          renderOrderDetailsPage(data, firebaseKey);
+      createItem(payload)
+        .then(({ name }) => {
+          const patchPayload = { firebaseKey: name };
+          updateItem(patchPayload);
+        })
+        .then(() => {
+          const firebaseKey = document.querySelector('#firebaseKey').value;
+          getItemsByOrderId(firebaseKey).then((data) => {
+            renderOrderDetailsPage(data, firebaseKey);
+          });
         });
-      });
     }
-
-    // // EDIT ITEM
-    // if (e.target.id.includes('edit-item')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const payload = {
-    //     itemName: document.querySelector('#item-name').value,
-    //     itemPrice: Number(document.querySelector('#item-price').value),
-    //     firebaseKey,
-    //   };
-    //   updateItem(payload)
-    //     .then(() => {
-    //       getItemsByOrderId(firebaseKey).then((data) => {
-    //         renderOrderDetailsPage(data, firebaseKey);
-    //       });
-    //     });
-    // }
 
     // EDIT ITEM
     if (e.target.id.includes('edit-item')) {
