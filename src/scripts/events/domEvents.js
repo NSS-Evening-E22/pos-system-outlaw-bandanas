@@ -1,6 +1,6 @@
 import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { deleteOrder, getOrders, getOpenOrders } from '../../api/orderData';
+import { deleteOrder, getOrders, getClosedOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
@@ -12,7 +12,7 @@ const domEvents = () => {
     // EVENT HANDLER FOR VIEW ORDERS BUTTON
     if (e.target.id.includes('view-orders')) {
       createOrderPage();
-      getOpenOrders().then(showOrders);
+      getOrders().then(showOrders);
     }
     // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
@@ -21,6 +21,43 @@ const domEvents = () => {
     // EVENT HANDLER FOR VIEW REVENUE BUTTON
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();
+
+      getClosedOrders().then((orders) => {
+        let totalTip = 0;
+        let itemTotal = 0;
+        let callInTotal = 0;
+        let walkInTotal = 0;
+        let cashPaymentNum = 0;
+        let cardPaymentNum = 0;
+        orders.forEach((order) => {
+          totalTip += order.tip;
+          if (order.orderType === 'Phone') {
+            callInTotal += 1;
+          }
+          if (order.orderType === 'Dine in') {
+            walkInTotal += 1;
+          }
+          if (order.paymentType === 'credit') {
+            cardPaymentNum += 1;
+          }
+          if (order.paymentType === 'cash') {
+            cashPaymentNum += 1;
+          }
+
+          document.querySelector('#total-call-in').innerHTML = `Total Call Ins: ${callInTotal}`;
+          document.querySelector('#total-walk-in').innerHTML = `Total Walk Ins: ${walkInTotal}`;
+          document.querySelector('#total-card-payments').innerHTML = `Total Card Payments: ${cardPaymentNum}`;
+          document.querySelector('#total-cash-payments').innerHTML = `Total Cash Payments: ${cashPaymentNum}`;
+
+          getItemsByOrderId(order.firebaseKey).then((items) => {
+            items.forEach((item) => {
+              itemTotal += item.itemPrice;
+            });
+            document.querySelector('#total-revenue').innerHTML = `Total Revenue: ${itemTotal}`;
+          });
+        });
+        document.querySelector('#total-tips').innerHTML = `Total Tips: ${totalTip}`;
+      });
     }
 
     // EVENT HANDLER FOR DELETE ORDER BUTTON
