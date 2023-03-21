@@ -3,26 +3,7 @@ import client from '../scripts/utils/client';
 const endpoint = client.databaseURL;
 
 const getOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/orders.json?orderBy="status"&equalTo="open"`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    })
-    .catch(reject);
-});
-
-// GET OPEN ORDERS
-const getOpenOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/orders.json?orderBy="status"&equalTo="open"`, {
+  fetch(`${endpoint}/orders.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -95,5 +76,5 @@ export {
   getOrders,
   deleteOrder,
   getSingleOrder,
-  
+
 };

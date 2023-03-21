@@ -1,4 +1,4 @@
-import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
+import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
 import { deleteOrder, getOrders, getSingleOrder } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
@@ -12,7 +12,12 @@ const domEvents = () => {
     // EVENT HANDLER FOR VIEW ORDERS BUTTON
     if (e.target.id.includes('view-orders')) {
       createOrderPage();
-      getOpenOrders().then(showOrders);
+      getOrders().then((data) => {
+        const openOrders = data.filter((item) => item.status === 'open');
+        showOrders(openOrders);
+        const closedOrders = data.filter((item) => item.status === 'closed');
+        showClosedOrders(closedOrders);
+      });
     }
     // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
@@ -29,7 +34,14 @@ const domEvents = () => {
       if (window.confirm('Want to Delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
         deleteOrder(firebaseKey).then(() => {
-          getOrders().then(showOrders);
+          getOrders().then((data) => {
+            const openOrders = data.filter((item) => item.status === 'open');
+            showOrders(openOrders);
+            const closedOrders = data.filter(
+              (item) => item.status === 'closed'
+            );
+            showClosedOrders(closedOrders);
+          });
         });
       }
     }

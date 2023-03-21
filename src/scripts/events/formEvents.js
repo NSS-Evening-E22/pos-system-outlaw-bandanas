@@ -1,10 +1,8 @@
 import { getOrders, createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
-
-import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
+import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderHomePage from '../pages/homePage';
-
 
 const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
@@ -25,7 +23,14 @@ const formEvents = (user) => {
         })
         .then(() => {
           createOrderPage();
-          getOrders().then(showOrders);
+          getOrders().then((data) => {
+            const openOrders = data.filter((item) => item.status === 'open');
+            showOrders(openOrders);
+            const closedOrders = data.filter(
+              (item) => item.status === 'closed'
+            );
+            showClosedOrders(closedOrders);
+          });
         });
     }
     if (e.target.id.includes('update-order')) {
@@ -40,7 +45,12 @@ const formEvents = (user) => {
       };
       updateOrder(payload).then(() => {
         createOrderPage();
-        getOrders().then(showOrders);
+        getOrders().then((data) => {
+          const openOrders = data.filter((item) => item.status === 'open');
+          showOrders(openOrders);
+          const closedOrders = data.filter((item) => item.status === 'closed');
+          showClosedOrders(closedOrders);
+        });
       });
     }
 
@@ -63,22 +73,6 @@ const formEvents = (user) => {
           });
         });
     }
-
-    // // EDIT ITEM
-    // if (e.target.id.includes('edit-item')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const payload = {
-    //     itemName: document.querySelector('#item-name').value,
-    //     itemPrice: Number(document.querySelector('#item-price').value),
-    //     firebaseKey,
-    //   };
-    //   updateItem(payload)
-    //     .then(() => {
-    //       getItemsByOrderId(firebaseKey).then((data) => {
-    //         renderOrderDetailsPage(data, firebaseKey);
-    //       });
-    //     });
-    // }
 
     // EDIT ITEM
     if (e.target.id.includes('edit-item')) {
