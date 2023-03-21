@@ -31,8 +31,9 @@ const domEvents = () => {
           getOrders().then(showOrders);
         });
       }
+    }
 
-   if (e.target.id.includes('goToPaymentButton')) {
+    if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
     }
 
@@ -62,8 +63,7 @@ const domEvents = () => {
           renderOrderDetailsPage(data, orderId);
         });
       });
-
-  
+    }
   });
 };
 

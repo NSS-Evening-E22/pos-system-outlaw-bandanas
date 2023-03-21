@@ -35,7 +35,6 @@ const formEvents = () => {
           renderOrderDetailsPage(data, firebaseKey);
         });
       });
-
     }
   });
 };

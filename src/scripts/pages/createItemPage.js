@@ -1,10 +1,9 @@
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
-
 const renderCreateItemPage = (orderId) => {
   clearDom();
-  console.warn(firebaseKey);
+  // console.warn(firebaseKey);
   const domString = `
   <form id="create-item-form" class="mb-4">
   <div class="form-group">

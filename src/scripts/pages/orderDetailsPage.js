@@ -2,7 +2,6 @@ import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 import itemCard from '../components/itemCard';
 
-
 const priceTotaled = (array) => {
   // const total = array.reduce((prev, next) => prev.itemPrice + next.itemPrice, 0);
   let total = 0;
