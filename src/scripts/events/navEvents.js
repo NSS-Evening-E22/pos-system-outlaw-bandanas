@@ -1,4 +1,4 @@
-import { getOrders } from '../../api/orderData';
+import { getOpenOrders } from '../../api/orderData';
 import { showOrders, createOrderPage } from '../pages/viewOrdersPage';
 import renderHomePage from '../pages/homePage';
 import createOrder from '../pages/createOrderPage';
@@ -8,14 +8,16 @@ const navEvents = (user) => {
     if (e.target.id.includes('go-home')) {
       renderHomePage(user);
     }
+    // VIEW ORDERS
     if (e.target.id.includes('nav-view-orders')) {
       createOrderPage();
-      getOrders().then(showOrders);
+      getOpenOrders().then(showOrders);
     }
+    // CREATE ORDERS
     if (e.target.id.includes('create-orders')) {
       createOrder();
     }
-
+    // HOME
     if (e.target.id.includes('go-home')) {
       renderHomePage(user);
     }
