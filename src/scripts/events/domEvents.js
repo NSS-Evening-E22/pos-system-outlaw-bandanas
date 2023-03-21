@@ -83,6 +83,10 @@ const domEvents = () => {
       }
     }
 
+
+    if (e.target.id.includes('goToPaymentButton')) {
+      renderCloseOrderPage();
+    }
     if (e.target.id.includes('edit-order-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orderObj) => createOrder(orderObj));
