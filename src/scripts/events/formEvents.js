@@ -1,6 +1,6 @@
 import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
-import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { renderOrderDetailsPage } from '../pages/orderDetailsPage';
 
 const formEvents = () => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {

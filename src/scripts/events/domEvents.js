@@ -4,7 +4,7 @@ import { deleteOrder, getOrders } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
-import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { renderOrderDetailsPage } from '../pages/orderDetailsPage';
 import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
 
 const domEvents = () => {
