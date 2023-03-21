@@ -9,21 +9,22 @@ import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
+    // EVENT HANDLER FOR VIEW ORDERS BUTTON
     if (e.target.id.includes('view-orders')) {
       createOrderPage();
-      getOrders().then(showOrders);
+      getOpenOrders().then(showOrders);
     }
-
+    // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
       createOrder();
     }
-
+    // EVENT HANDLER FOR VIEW REVENUE BUTTON
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();
     }
 
+    // EVENT HANDLER FOR DELETE ORDER BUTTON
     if (e.target.id.includes('delete-order-btn')) {
-      console.warn('Delete Order clicked');
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to Delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
@@ -37,10 +38,14 @@ const domEvents = () => {
       const [, firebaseKey] = e.target.id.split('--');
       getSingleOrder(firebaseKey).then((orderObj) => createOrder(orderObj));
     }
+
+    // EVENT HANDLER FOR GO TO PAYMENT BUTTON
     if (e.target.id.includes('goToPaymentButton')) {
-      renderCloseOrderPage();
+      const [, orderId] = e.target.id.split('--');
+      renderCloseOrderPage(orderId);
     }
 
+    // EVENT HANDLER FOR ORDER DETAILS BUTTON
     if (e.target.id.includes('order-details-btn')) {
       const [, firebaseKey] = e.target.id.split('--');
       getItemsByOrderId(firebaseKey).then((data) => {
