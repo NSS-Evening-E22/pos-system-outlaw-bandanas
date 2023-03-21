@@ -1,6 +1,6 @@
 import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
-import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { renderOrderDetailsPage } from '../pages/orderDetailsPage';
 import renderHomePage from '../pages/homePage';
 
 const formEvents = (user) => {
@@ -38,21 +38,21 @@ const formEvents = (user) => {
       });
     }
 
-    // // EDIT ITEM
-    // if (e.target.id.includes('edit-item')) {
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const payload = {
-    //     itemName: document.querySelector('#item-name').value,
-    //     itemPrice: Number(document.querySelector('#item-price').value),
-    //     firebaseKey,
-    //   };
-    //   updateItem(payload)
-    //     .then(() => {
-    //       getItemsByOrderId(firebaseKey).then((data) => {
-    //         renderOrderDetailsPage(data, firebaseKey);
-    //       });
-    //     });
-    // }
+    // EDIT ITEM
+    if (e.target.id.includes('edit-item')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const payload = {
+        itemName: document.querySelector('#item-name').value,
+        itemPrice: Number(document.querySelector('#item-price').value),
+        firebaseKey,
+      };
+      updateItem(payload)
+        .then(() => {
+          getItemsByOrderId(firebaseKey).then((data) => {
+            renderOrderDetailsPage(data, firebaseKey);
+          });
+        });
+    }
 
     // EDIT ITEM
     if (e.target.id.includes('edit-item')) {
