@@ -1,8 +1,9 @@
 import { createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
-import { renderOrderDetailsPage } from '../pages/orderDetailsPage';
+import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import renderHomePage from '../pages/homePage';
 
-const formEvents = () => {
+const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -37,6 +38,22 @@ const formEvents = () => {
       });
     }
 
+    // // EDIT ITEM
+    // if (e.target.id.includes('edit-item')) {
+    //   const [, firebaseKey] = e.target.id.split('--');
+    //   const payload = {
+    //     itemName: document.querySelector('#item-name').value,
+    //     itemPrice: Number(document.querySelector('#item-price').value),
+    //     firebaseKey,
+    //   };
+    //   updateItem(payload)
+    //     .then(() => {
+    //       getItemsByOrderId(firebaseKey).then((data) => {
+    //         renderOrderDetailsPage(data, firebaseKey);
+    //       });
+    //     });
+    // }
+
     // EDIT ITEM
     if (e.target.id.includes('edit-item')) {
       const [, firebaseKey] = e.target.id.split('--');
@@ -46,12 +63,25 @@ const formEvents = () => {
         firebaseKey,
       };
       updateItem(payload)
-        .then()
         .then(() => {
           const orderId = document.querySelector('#firebaseKey').value;
           getItemsByOrderId(orderId).then((data) => {
             renderOrderDetailsPage(data, orderId);
           });
+        });
+    }
+
+    // CLOSE ORDER
+    if (e.target.id.includes('close-order-form')) {
+      const payload = {
+        paymentType: document.querySelector('#payment-type').value,
+        tip: Number(document.querySelector('#tip').value),
+        status: 'closed',
+        firebaseKey: document.querySelector('#orderId').value,
+      };
+      updateOrder(payload)
+        .then(() => {
+          renderHomePage(user);
         });
     }
   });
