@@ -1,6 +1,7 @@
 import clearDom from '../utils/clearDom';
 import renderToDom from '../utils/renderToDom';
 
+
 const renderCreateItemPage = (orderId, obj = {}) => {
   clearDom();
   const domString = `

@@ -1,6 +1,6 @@
-import { createOrderPage, showOrders } from '../pages/viewOrdersPage';
+import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { deleteOrder, getOrders, getClosedOrders } from '../../api/orderData';
+import { deleteOrder, getOrders, getSingleOrder, getClosedOrder } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
@@ -12,7 +12,12 @@ const domEvents = () => {
     // EVENT HANDLER FOR VIEW ORDERS BUTTON
     if (e.target.id.includes('view-orders')) {
       createOrderPage();
-      getOrders().then(showOrders);
+      getOrders().then((data) => {
+        const openOrders = data.filter((item) => item.status === 'open');
+        showOrders(openOrders);
+        const closedOrders = data.filter((item) => item.status === 'closed');
+        showClosedOrders(closedOrders);
+      });
     }
     // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
@@ -66,10 +71,27 @@ const domEvents = () => {
       if (window.confirm('Want to Delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
         deleteOrder(firebaseKey).then(() => {
-          getOrders().then(showOrders);
+          getOrders().then((data) => {
+            const openOrders = data.filter((item) => item.status === 'open');
+            showOrders(openOrders);
+            const closedOrders = data.filter(
+              (item) => item.status === 'closed'
+            );
+            showClosedOrders(closedOrders);
+          });
         });
       }
     }
+
+
+    if (e.target.id.includes('goToPaymentButton')) {
+      renderCloseOrderPage();
+    }
+    if (e.target.id.includes('edit-order-btn')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      getSingleOrder(firebaseKey).then((orderObj) => createOrder(orderObj));
+    }
+
     // EVENT HANDLER FOR GO TO PAYMENT BUTTON
     if (e.target.id.includes('goToPaymentButton')) {
       const [, orderId] = e.target.id.split('--');

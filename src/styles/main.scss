@@ -1,18 +1,37 @@
-$primary: #d2b48c;
-$success: #1a472a;
-$warning: #959672;
-$danger: #6f4e37;
-$secondary: #5c4033;
+$primary: orange;
+$success: yellow;
+$warning: red;
+$danger: green;
+$secondary: blue;
 
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: antiquewhite;
-  color: brown;
+  background-color: lightgray;
+  color: black;
   text-align: center;
 }
+
 #itemCards {
   width: 80%;
   margin: 1.5em auto;
+}
+
+.btn-login {
+  background: rgb(192, 192, 192, 0.5);
+  color: white;
+  padding: 25px 75px 25px 75px;
+  position: relative;
+  top: 110px;
+}
+
+.login-bg {
+  position: absolute;
+  height: 100%;
+}
+
+.login-logo {
+  position: relative;
+  top: 130px;
 }

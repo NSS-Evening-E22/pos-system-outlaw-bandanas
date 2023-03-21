@@ -67,6 +67,7 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+
 // GET SINGLE ITEM FROM FIREBASE DB
 const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
@@ -81,6 +82,7 @@ const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 // DELETE SINGLE ITEM FROM FIREBASE DB
+
 const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
     method: 'DELETE',
