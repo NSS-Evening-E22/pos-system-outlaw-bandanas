@@ -1,5 +1,5 @@
 import { getOrders } from '../../api/orderData';
-import { showOrders, createOrderPage } from '../pages/viewOrdersPage';
+import { showOrders, createOrderPage, showClosedOrders } from '../pages/viewOrdersPage';
 import renderHomePage from '../pages/homePage';
 import createOrder from '../pages/createOrderPage';
 
@@ -8,14 +8,21 @@ const navEvents = (user) => {
     if (e.target.id.includes('go-home')) {
       renderHomePage(user);
     }
-    if (e.target.id.includes('nav-view-orders')) {
+    // VIEW ORDERS
+    if (e.target.id.includes('nav-viewOrders')) {
       createOrderPage();
-      getOrders().then(showOrders);
+      getOrders().then((data) => {
+        const openOrders = data.filter((item) => item.status === 'open');
+        showOrders(openOrders);
+        const closedOrders = data.filter((item) => item.status === 'closed');
+        showClosedOrders(closedOrders);
+      });
     }
+    // CREATE ORDERS
     if (e.target.id.includes('create-orders')) {
       createOrder();
     }
-
+    // HOME
     if (e.target.id.includes('go-home')) {
       renderHomePage(user);
     }

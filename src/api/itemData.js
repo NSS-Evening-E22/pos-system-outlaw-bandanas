@@ -1,7 +1,7 @@
 import client from '../scripts/utils/client';
 
 const endpoint = client.databaseURL;
-
+// GET ALL ITEMS FROM FIREBASE DB
 const getItems = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items.json`, {
     method: 'GET',
@@ -20,6 +20,7 @@ const getItems = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// GET ITEMS BY ORDER ID - Only items from that order will be displayed on DOM
 const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items.json?orderBy="orderId"&equalTo="${orderId}"`, {
     method: 'GET',
@@ -38,6 +39,7 @@ const getItemsByOrderId = (orderId) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// CREATE SINGLE ITEM FROM FIREBASE DB
 const createItem = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items.json`, {
     method: 'POST',
@@ -51,6 +53,7 @@ const createItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+// UPDATE SINGLE ITEM FROM FIREBASE DB
 const updateItem = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${payload.firebaseKey}.json`, {
     method: 'PATCH',
@@ -63,6 +66,22 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .then(resolve)
     .catch(reject);
 });
+
+
+// GET SINGLE ITEM FROM FIREBASE DB
+const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/items/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+// DELETE SINGLE ITEM FROM FIREBASE DB
 
 const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {
@@ -81,6 +100,6 @@ export {
   getItemsByOrderId,
   createItem,
   updateItem,
-  deleteItem
-
+  deleteItem,
+  getSingleItem,
 };
