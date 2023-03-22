@@ -1,7 +1,7 @@
 import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
 import {
-  getOrders, getSingleOrder, getClosedOrders
+  deleteOrder, getOrders, getSingleOrder, getClosedOrders
 } from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
@@ -42,13 +42,13 @@ const domEvents = () => {
           if (order.orderType === 'Phone') {
             callInTotal += 1;
           }
-          if (order.orderType === 'Dine in') {
+          if (order.orderType === 'Walk In') {
             walkInTotal += 1;
           }
-          if (order.paymentType === 'credit') {
+          if (order.paymentType === 'Credit') {
             cardPaymentNum += 1;
           }
-          if (order.paymentType === 'cash') {
+          if (order.paymentType === 'Cash') {
             cashPaymentNum += 1;
           }
 
