@@ -67,7 +67,6 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-
 // GET SINGLE ITEM FROM FIREBASE DB
 const getSingleItem = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/items/${firebaseKey}.json`, {

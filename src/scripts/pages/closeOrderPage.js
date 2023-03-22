@@ -8,7 +8,11 @@ const renderCloseOrderPage = (orderId) => {
   <form id="close-order-form" class="mb-4">
   <div class="form-group">
     <label for="payment-type">Payment Type</label>
-    <input type="text" class="form-control" id="payment-type" placeholder="Payment Type (cash, credit, mobile)" required>
+    <select class="form-control" required>
+      <option value="">Select an Option</option>
+      <option value="Cash">Cash</option>
+      <option value="Credit">Credit</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="tip">Tip Amount</label>
