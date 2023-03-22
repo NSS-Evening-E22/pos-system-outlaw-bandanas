@@ -12,6 +12,7 @@ const priceTotaled = (array) => {
 };
 
 const renderOrderDetailsPage = (array, orderId) => {
+  console.warn(`renderOrderDetails: ${array} orderid: ${orderId}`);
   const totalPrice = priceTotaled(array);
   clearDom();
   const domString = `

@@ -67,9 +67,10 @@ const formEvents = (user) => {
           updateItem(patchPayload);
         })
         .then(() => {
-          const firebaseKey = document.querySelector('#firebaseKey').value;
-          getItemsByOrderId(firebaseKey).then((data) => {
-            renderOrderDetailsPage(data, firebaseKey);
+          const orderId = document.querySelector('#firebaseKey').value;
+          console.warn(`formEvent: ${orderId}`);
+          getItemsByOrderId(orderId).then((data) => {
+            renderOrderDetailsPage(data, orderId);
           });
         });
     }
