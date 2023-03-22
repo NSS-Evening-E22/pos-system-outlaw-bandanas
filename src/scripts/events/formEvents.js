@@ -19,20 +19,25 @@ const formEvents = (user) => {
       createOrder(payload)
         .then(({ name }) => {
           const patchPayload = { firebaseKey: name };
+          console.warn('patchPayload:', patchPayload);
           updateOrder(patchPayload);
         })
         .then(() => {
-          createOrderPage();
-          getOrders().then((data) => {
-            const openOrders = data.filter((item) => item.status === 'open');
-            showOrders(openOrders);
-            const closedOrders = data.filter(
-              (item) => item.status === 'closed'
-            );
-            showClosedOrders(closedOrders);
-          });
+          setTimeout(() => {
+            createOrderPage();
+            getOrders().then((data) => {
+              const openOrders = data.filter((item) => item.status === 'open');
+              console.warn('openOrders:', openOrders);
+              showOrders(openOrders);
+              const closedOrders = data.filter(
+                (item) => item.status === 'closed'
+              );
+              showClosedOrders(closedOrders);
+            });
+          }, 1000);
         });
     }
+    // UPDATE ORDER
     if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
@@ -67,9 +72,9 @@ const formEvents = (user) => {
           updateItem(patchPayload);
         })
         .then(() => {
-          const firebaseKey = document.querySelector('#firebaseKey').value;
-          getItemsByOrderId(firebaseKey).then((data) => {
-            renderOrderDetailsPage(data, firebaseKey);
+          const orderId = document.querySelector('#firebaseKey').value;
+          getItemsByOrderId(orderId).then((data) => {
+            renderOrderDetailsPage(data, orderId);
           });
         });
     }
