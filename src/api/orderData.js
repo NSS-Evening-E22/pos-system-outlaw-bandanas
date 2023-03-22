@@ -94,6 +94,5 @@ export {
   getOrders,
   deleteOrder,
   getSingleOrder,
-  // getOpenOrders,
   getClosedOrders
 };
