@@ -1,6 +1,6 @@
 import { getOrders, createOrder, updateOrder } from '../../api/orderData';
 import { createItem, updateItem, getItemsByOrderId } from '../../api/itemData';
-import renderOrderDetailsPage from '../pages/orderDetailsPage';
+import { renderOrderDetailsPage } from '../pages/orderDetailsPage';
 import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderHomePage from '../pages/homePage';
 

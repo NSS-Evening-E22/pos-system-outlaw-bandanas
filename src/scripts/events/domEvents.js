@@ -1,6 +1,8 @@
 import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { deleteOrder, getOrders, getSingleOrder, getClosedOrder } from '../../api/orderData';
+import {
+  deleteOrder, getOrders, getSingleOrder, getClosedOrders
+} from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
@@ -82,7 +84,6 @@ const domEvents = () => {
         });
       }
     }
-
 
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
