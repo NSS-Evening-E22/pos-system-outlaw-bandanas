@@ -1,11 +1,14 @@
 import { createOrderPage, showOrders, showClosedOrders } from '../pages/viewOrdersPage';
 import renderRevenuePage from '../pages/revenuePage';
-import { deleteOrder, getOrders, getSingleOrder, getClosedOrder } from '../../api/orderData';
+import {
+  getOrders, getSingleOrder, getClosedOrders
+} from '../../api/orderData';
 import createOrder from '../pages/createOrderPage';
 import renderCreateItemPage from '../pages/createItemPage';
 import renderCloseOrderPage from '../pages/closeOrderPage';
 import renderOrderDetailsPage from '../pages/orderDetailsPage';
 import { getItemsByOrderId, deleteItem, getSingleItem } from '../../api/itemData';
+import deleteOrderItemRelationship from '../../api/mergedData';
 
 const domEvents = () => {
   document.querySelector('#app').addEventListener('click', (e) => {
@@ -70,7 +73,7 @@ const domEvents = () => {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to Delete?')) {
         const [, firebaseKey] = e.target.id.split('--');
-        deleteOrder(firebaseKey).then(() => {
+        deleteOrderItemRelationship(firebaseKey).then(() => {
           getOrders().then((data) => {
             const openOrders = data.filter((item) => item.status === 'open');
             showOrders(openOrders);
@@ -82,7 +85,6 @@ const domEvents = () => {
         });
       }
     }
-
 
     if (e.target.id.includes('goToPaymentButton')) {
       renderCloseOrderPage();
