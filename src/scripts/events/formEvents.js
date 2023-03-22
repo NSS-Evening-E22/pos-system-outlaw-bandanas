@@ -7,6 +7,7 @@ import renderHomePage from '../pages/homePage';
 const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
+
     //  EVENT HANDLER SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
@@ -19,7 +20,6 @@ const formEvents = (user) => {
       createOrder(payload)
         .then(({ name }) => {
           const patchPayload = { firebaseKey: name };
-          console.warn('patchPayload:', patchPayload);
           updateOrder(patchPayload);
         })
         .then(() => {
@@ -27,7 +27,6 @@ const formEvents = (user) => {
             createOrderPage();
             getOrders().then((data) => {
               const openOrders = data.filter((item) => item.status === 'open');
-              console.warn('openOrders:', openOrders);
               showOrders(openOrders);
               const closedOrders = data.filter(
                 (item) => item.status === 'closed'
@@ -37,7 +36,8 @@ const formEvents = (user) => {
           }, 1000);
         });
     }
-    // UPDATE ORDER
+
+    // EVENT HANDLER UPDATE ORDER
     if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {

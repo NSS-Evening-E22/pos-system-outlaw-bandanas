@@ -22,10 +22,12 @@ const domEvents = () => {
         showClosedOrders(closedOrders);
       });
     }
+
     // EVENT HANDLER FOR CREATE ORDERS BUTTON
     if (e.target.id.includes('create-orders')) {
       createOrder();
     }
+
     // EVENT HANDLER FOR VIEW REVENUE BUTTON
     if (e.target.id.includes('view-revenue')) {
       renderRevenuePage();
