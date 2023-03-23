@@ -21,7 +21,7 @@ const createOrder = (obj = {}) => {
     <label for="image">Order Type</label>
     <input type="text" class="form-control" id="order-type" placeholder="Order Type" value="${obj.orderType || ''}" required>
   </div>
-  <button type="submit" id="add-order-btn" class="btn btn-primary mt-3">Create/Edit Order</button>
+  <button type="submit" id="add-order-btn" class="btn btn-create mt-3">Create/Edit Order</button>
 </form>`;
   renderToDom(domString, '#form-pages');
 };

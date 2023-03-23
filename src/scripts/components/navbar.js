@@ -1,9 +1,10 @@
 import renderToDom from '../utils/renderToDom';
+// import CCfullColor from '../../assets/CCfullColor.jpg';
 
 const createNavbar = () => {
   const domString = `
-  <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
-  <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container-fluid" style="background-color: #707070">
     <a class="navbar-brand" href="#" id="go-home">CCC</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,7 +20,7 @@ const createNavbar = () => {
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
+        <button class="btn btn-search" type="submit">Search</button>
       </form>
       <span>
         <div id="logout-div"></div>

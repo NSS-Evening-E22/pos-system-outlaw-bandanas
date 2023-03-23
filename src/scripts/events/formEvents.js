@@ -72,7 +72,6 @@ const formEvents = (user) => {
             renderOrderDetailsPage(data, firebaseKey);
           });
         });
-
     }
 
     // EDIT ITEM

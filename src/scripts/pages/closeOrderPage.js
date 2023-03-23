@@ -15,7 +15,7 @@ const renderCloseOrderPage = (orderId) => {
     <input type="text" class="form-control" id="tip" placeholder="Tip" required>
     <input type="hidden" id="orderId" value="${orderId}">
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Close Order</button>
+  <button type="submit" class="btn btn-payment mt-3">Close Order</button>
 </form>`;
 
   renderToDOM(domString, '#form-pages');
