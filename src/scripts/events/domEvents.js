@@ -41,13 +41,13 @@ const domEvents = () => {
           if (order.orderType === 'Phone') {
             callInTotal += 1;
           }
-          if (order.orderType === 'Dine in') {
+          if (order.orderType === 'Walk In') {
             walkInTotal += 1;
           }
-          if (order.paymentType === 'credit') {
+          if (order.paymentType === 'Credit') {
             cardPaymentNum += 1;
           }
-          if (order.paymentType === 'cash') {
+          if (order.paymentType === 'Cash') {
             cashPaymentNum += 1;
           }
 

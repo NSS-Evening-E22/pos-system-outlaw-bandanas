@@ -19,7 +19,11 @@ const createOrder = (obj = {}) => {
   </div>
   <div class="form-group">
     <label for="image">Order Type</label>
-    <input type="text" class="form-control" id="order-type" placeholder="Order Type" value="${obj.orderType || ''}" required>
+    <select class="form-control" id="order-type" required>
+      <option value="${obj.orderType || ''}">${obj.orderType || 'Select an option'}</option>
+      <option value="Phone">Phone</option>
+      <option value="Walk In">Walk In</option>
+    </select>
   </div>
   <button type="submit" id="add-order-btn" class="btn btn-create mt-3">Create/Edit Order</button>
 </form>`;
