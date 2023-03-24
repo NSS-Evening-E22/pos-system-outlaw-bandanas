@@ -6,7 +6,9 @@ const renderHomePage = (user) => {
   clearDom();
   const domString = `
     <div id="welcome-user">
-      <img src="${homePageBackDrop}" height="100%" width="100%" background-size="cover">
+      <div class="homeImg">
+        <img src="${homePageBackDrop}" height="100%" width="100%" background-size="cover">
+      </div>
       <div class="welcome">
         <h1>Welcome ${user.displayName}!</h1>
       </div>

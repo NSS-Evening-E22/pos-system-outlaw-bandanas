@@ -33,6 +33,11 @@ body {
 .btn-outline-logout {
   color: white;
   border-color: #D3D3D3;
+  margin: 7px;
+}
+.btn-outline-logout:hover {
+  background: white;
+  color: #707070;
 }
 
 .login-bg {
@@ -46,8 +51,7 @@ body {
 }
 
 .container-fluid {
-  height: 50px;
-  margin: 0;
+  height: auto;
   padding: 0px 15px 0px 0px;
 }
 
@@ -55,7 +59,11 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 0;
+  margin: 0;
+}
+
+.search-bar {
+  margin: 0px 0px 0px 15px;
 }
 
 .btn-search {
@@ -63,12 +71,22 @@ body {
   color: #D0AE86;
 }
 
+.homeImg {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  opacity: 0.65;
+}
+
 .welcome {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 120px;
-  padding: 10%;
+  position: relative;
+  padding: 23% 0px 8% 0px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-text-stroke: 1px #321500;
 }
 
 #home-buttons {
@@ -77,6 +95,7 @@ body {
   align-content: space-around;
   align-items: center;
   gap: 20px;
+  position: relative;
 }
 
 .btn-viewOrd {
@@ -132,6 +151,11 @@ body {
 .btn-edit:hover {
   border-color: #6f4e37;
   color: #6f4e37;
+}
+
+.btn-item-edit {
+  background: silver;
+  color: black;
 }
 
 .btn-delete {
