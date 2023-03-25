@@ -15,9 +15,9 @@ https://www.figma.com/file/ejnaU4SD3UjC7KXNZYC5e7/Outlaw-Bandanas-Group-Project-
 https://lucid.app/lucidchart/62618e8a-2a4d-4aa1-89b2-59a12cd2e359/edit?invitationId=inv_07d55a70-acef-4f98-a5ab-95a0650bee9c&referringApp=slack&page=0_0#
 ![flowchart](https://user-images.githubusercontent.com/84203439/226766680-9066b092-9c6b-4cda-8ce2-a9bee59bc6c9.PNG)
 
-# Link to the deployed project (will learn later)
+# Link to the deployed project
 
-need to do this still
+outlaw-bandanas-coffee-and-code.netlify.app
 
 # Link to project board
 
@@ -35,7 +35,13 @@ This information is stored on realtime data base using firebase.
 
 # Screenshots of your project
 
-still needs done
+![loginPage](https://user-images.githubusercontent.com/84203439/227722988-5d6d4d5e-8bc7-4cb9-b905-88d5c9eb326c.PNG)
+
+![welcomePage](https://user-images.githubusercontent.com/84203439/227723009-99c2e9fe-90b2-480b-add6-27652fd6ebca.PNG)
+
+![viewOrders](https://user-images.githubusercontent.com/84203439/227723030-eeb6b523-e736-4291-87e6-7e8bf5064266.PNG)
+
+![revenue](https://user-images.githubusercontent.com/84203439/227723052-aefc2c03-53eb-4504-9e46-be348c9290a9.PNG)
 
 # List of contributors and links to their GH profiles
 - [Steve Butler](https://github.com/SteveCButler),
