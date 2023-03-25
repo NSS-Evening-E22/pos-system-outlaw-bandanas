@@ -63,10 +63,10 @@ const domEvents = () => {
             items.forEach((item) => {
               itemTotal += item.itemPrice;
             });
-            document.querySelector('#total-revenue').innerHTML = `Total Revenue: ${itemTotal.toFixed(2)}`;
+            document.querySelector('#total-revenue').innerHTML = `Total Revenue: $${itemTotal.toFixed(2)}`;
           });
         });
-        document.querySelector('#total-tips').innerHTML = `Total Tips: ${totalTip.toFixed(2)}`;
+        document.querySelector('#total-tips').innerHTML = `Total Tips: $${totalTip.toFixed(2)}`;
       });
     }
 

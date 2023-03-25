@@ -6,10 +6,10 @@ const renderRevenuePage = () => {
   const domString = `
   <div class="card text-center">
   <div class="card-header">
-    Revenue
+    <h1>Revenue</h1>
   </div>
   <div class="card-body">
-    <h5 class="card-title" id="total-revenue">Total Revenue: 0.00 </h5>
+    <h4 class="card-title mb-3" id="total-revenue">Total Revenue: 0.00 </h4>
     <p class="card-text" id="total-tips">Total Tips: 0.00</p>
     <p class="card-text" id="total-call-in">Total Call In Orders: 0</p>
     <p class="card-text" id="total-walk-in">Total Walk In Orders: 0</p>

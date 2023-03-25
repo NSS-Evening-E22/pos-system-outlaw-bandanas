@@ -5,7 +5,7 @@ const itemCard = (array) => {
   array.forEach((item) => {
     domString += `
     
-      <div class="card w-75 m-3 ">
+      <div class="card w-50 m-3 ">
         <div class="card-body">
           <h5 class="card-title">${item.itemName}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Price: $${item.itemPrice.toFixed(2)}</h6>
