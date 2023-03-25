@@ -25,4 +25,4 @@ const renderOrderDetailsPage = (array, orderId) => {
   itemCard(array);
 };
 
-export default renderOrderDetailsPage;
+export { renderOrderDetailsPage, priceTotaled };
