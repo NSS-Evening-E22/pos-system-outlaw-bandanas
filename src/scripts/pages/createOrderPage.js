@@ -25,7 +25,7 @@ const createOrder = (obj = {}) => {
       <option value="Walk In">Walk In</option>
     </select>
   </div>
-  <button type="submit" id="add-order-btn" class="btn btn-primary mt-3">Create/Edit Order</button>
+  <button type="submit" id="add-order-btn" class="btn btn-create mt-3">Create/Edit Order</button>
 </form>`;
   renderToDom(domString, '#form-pages');
 };
