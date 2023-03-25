@@ -29,4 +29,23 @@ const navEvents = (user) => {
   });
 };
 
-export default navEvents;
+const searchEvents = () => {
+  document.querySelector('#navBar').addEventListener('keyup', (e) => {
+    if (e.target.id.includes('order-search')) {
+      getOrders().then((data) => {
+        const search = e.target.value.toLowerCase();
+        console.warn(search);
+        const results = data.filter((el) => el.orderName.toLowerCase().includes(search) || el.phoneNum.split('-').join('').includes(search) || el.phoneNum.includes(search));
+        const openRes = results.filter((item) => item.status === 'open');
+        showOrders(openRes);
+        const closedRes = results.filter((item) => item.status === 'closed');
+        showClosedOrders(closedRes);
+      });
+    }
+  });
+};
+
+export {
+  navEvents,
+  searchEvents,
+};

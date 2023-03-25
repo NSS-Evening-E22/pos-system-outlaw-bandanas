@@ -7,6 +7,7 @@ import renderHomePage from '../pages/homePage';
 const formEvents = (user) => {
   document.querySelector('#form-pages').addEventListener('submit', (e) => {
     e.preventDefault();
+
     //  EVENT HANDLER SUBMIT ORDER
     if (e.target.id.includes('submit-order')) {
       const payload = {
@@ -22,17 +23,21 @@ const formEvents = (user) => {
           updateOrder(patchPayload);
         })
         .then(() => {
-          createOrderPage();
-          getOrders().then((data) => {
-            const openOrders = data.filter((item) => item.status === 'open');
-            showOrders(openOrders);
-            const closedOrders = data.filter(
-              (item) => item.status === 'closed'
-            );
-            showClosedOrders(closedOrders);
-          });
+          setTimeout(() => {
+            createOrderPage();
+            getOrders().then((data) => {
+              const openOrders = data.filter((item) => item.status === 'open');
+              showOrders(openOrders);
+              const closedOrders = data.filter(
+                (item) => item.status === 'closed'
+              );
+              showClosedOrders(closedOrders);
+            });
+          }, 1000);
         });
     }
+
+    // EVENT HANDLER UPDATE ORDER
     if (e.target.id.includes('update-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
@@ -67,9 +72,9 @@ const formEvents = (user) => {
           updateItem(patchPayload);
         })
         .then(() => {
-          const firebaseKey = document.querySelector('#firebaseKey').value;
-          getItemsByOrderId(firebaseKey).then((data) => {
-            renderOrderDetailsPage(data, firebaseKey);
+          const orderId = document.querySelector('#firebaseKey').value;
+          getItemsByOrderId(orderId).then((data) => {
+            renderOrderDetailsPage(data, orderId);
           });
         });
     }
