@@ -47,7 +47,9 @@ const showClosedOrders = (array) => {
       <hr>
       <div id="card-info">
         <p class="card-text">${item.email}</p>
-        <p class="card-text"> ${item.phoneNum}</p>
+
+        <p class="card-text">${item.phoneNum}</p>
+
         <p class="card-text">Order Type: ${item.orderType}</p>
       </div>
     </div>
