@@ -14,7 +14,7 @@ const renderCreateItemPage = (orderId, obj = {}) => {
     <input type="text" class="form-control" id="item-price" placeholder="Item Price" value="${obj.itemPrice || ''}" required>
     <input type="hidden" id="firebaseKey" value="${orderId}" >
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Add/Edit Item</button>
+  <button type="submit" class="btn btn-addItem mt-3">Add/Edit Item</button>
 </form>`;
 
   renderToDom(domString, '#form-pages');

@@ -1,8 +1,8 @@
-$primary: orange;
-$success: yellow;
-$warning: red;
-$danger: green;
-$secondary: blue;
+$primary: white;
+$secondary: orange;
+$success: green;
+$warning: yellow;
+$danger: red;
 
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import '~bootstrap/scss/bootstrap';
@@ -25,6 +25,20 @@ body {
   position: relative;
   top: 110px;
 }
+.btn-login:hover {
+  border-color: rgb(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255, 0.5);
+}
+
+.btn-outline-logout {
+  color: white;
+  border-color: #D3D3D3;
+  margin: 7px;
+}
+.btn-outline-logout:hover {
+  background: white;
+  color: #707070;
+}
 
 .login-bg {
   position: absolute;
@@ -34,4 +48,137 @@ body {
 .login-logo {
   position: relative;
   top: 130px;
+}
+
+.container-fluid {
+  height: auto;
+  padding: 0px 15px 0px 0px;
+}
+
+.CCfullColor {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.search-bar {
+  margin: 0px 0px 0px 15px;
+}
+
+.btn-search {
+  background: #6F4E37;
+  color: #D0AE86;
+}
+
+.homeImg {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  opacity: 0.65;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 23% 0px 8% 0px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  -webkit-text-stroke: 1px #321500;
+}
+
+#home-buttons {
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.btn-viewOrd {
+  padding: 10px;
+  background: silver;
+  color: black;
+}
+.btn-viewOrd:hover{
+  background: #6F4E37;
+  color: #D0AE86;
+}
+
+.btn-create {
+  padding: 10px;
+  background: silver;
+  color: black;
+}
+.btn-create:hover{
+  background: #6F4E37;
+  color: #D0AE86;
+}
+
+.btn-viewRev {
+  padding: 10px;
+  background: silver;
+  color: black;
+}
+.btn-viewRev:hover{
+  background: #6F4E37;
+  color: #D0AE86;
+}
+
+#view-orders-content {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-around;
+  gap: 10px 15px;
+}
+
+.btn-details {
+  background: #A48866;
+  color: white;
+}
+.btn-details:hover {
+  border-color: #A48866;
+  color: #A48866;
+}
+
+.btn-edit {
+  background: #6f4e37;
+  color: white;
+}
+.btn-edit:hover {
+  border-color: #6f4e37;
+  color: #6f4e37;
+}
+
+.btn-item-edit {
+  background: silver;
+  color: black;
+}
+
+.btn-delete {
+  border-color: #A00000;
+  color: #A00000;
+}
+.btn-delete:hover {
+  background: #A00000;
+  color: white;
+}
+
+.btn-addItem {
+ background: silver;
+ color: black;
+}
+
+.btn-payment {
+  border-color: #739168;
+  background: #87AD79;
+  color: white;
+}
+.btn-payment:hover {
+  border-color: #739168;
+  background: #244319;
+  color: #87AD79;
 }
