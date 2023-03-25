@@ -18,8 +18,7 @@ const createNavbar = () => {
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-warning" type="submit">Search</button>
+        <input class="form-control me-2" type="search" id="order-search" placeholder="Search" aria-label="Search">
       </form>
       <span>
         <div id="logout-div"></div>
