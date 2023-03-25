@@ -8,7 +8,7 @@ const domBuilder = () => {
     <div id="view-orders-page" class="mt-4"></div>
     <div id="order-details-page"></div>
     <div id="form-pages" class="w-50 mx-auto mt-5"></div>
-    <div id="revenue-page"></div>
+    <div id="revenue-page" class="w-50 mx-auto"></div>
   </div>
   `;
 

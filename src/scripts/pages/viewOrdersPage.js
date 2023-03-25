@@ -40,14 +40,16 @@ const showOrders = (array) => {
 const showClosedOrders = (array) => {
   let domString = '';
   array.forEach((item) => {
-    domString += `<div class="card" style="width: 19rem;">
+    domString += `<div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">${item.orderName}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${item.status}</h6>
       <hr>
       <div id="card-info">
         <p class="card-text">${item.email}</p>
+
         <p class="card-text">${item.phoneNum}</p>
+
         <p class="card-text">Order Type: ${item.orderType}</p>
       </div>
     </div>

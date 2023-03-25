@@ -14,7 +14,8 @@ const renderOrderDetailsPage = (array, orderId) => {
   const totalPrice = priceTotaled(array);
   clearDom();
   const domString = `
-  <h1 class="mt-5">Total: $${totalPrice}</h1>
+  <h1 class="mt-5">Order Details</h1>
+  <h2 class="mt-5">Total: $${totalPrice}</h2>
     <div id="itemCards" class="d-flex flex-column align-items-center "></div>
     <div id="itemDetailsButtons" class="d-flex justify-content-center gap-3 mt-4">
       <button id="addItemButton--${orderId}" class="btn btn-lg btn-addItem">Add Item</button>
